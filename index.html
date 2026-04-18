@@ -1,113 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My GitHub Pages Site</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>A Little Game for Princy 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f0f4f8;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
+  :root {
+    --rose: #e8547a;
+    --blush: #f9c6d3;
+    --cream: #fff8f0;
+    --deep: #3a1a2e;
+    --gold: #e8a87c;
+    --soft: #fde8ef;
+  }
 
-    .card {
-      background: white;
-      border-radius: 16px;
-      padding: 2.5rem 3rem;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      max-width: 480px;
-      width: 90%;
-    }
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    position: relative;
+  }
 
-    h1 {
-      font-size: 2rem;
-      color: #1a1a2e;
-      margin-bottom: 0.5rem;
-    }
+  .hearts-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
 
-    p {
-      color: #555;
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
+  .heart-float {
+    position: absolute;
+    bottom: -60px;
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
 
-    #message {
-      font-size: 1.1rem;
-      color: #4f46e5;
-      font-weight: 600;
-      min-height: 28px;
-      margin-bottom: 1.5rem;
-      transition: all 0.3s ease;
-    }
+  @keyframes floatUp {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.3; }
+    100% { transform: translateY(-110vh) rotate(30deg); opacity: 0; }
+  }
 
-    button {
-      background: #4f46e5;
-      color: white;
-      border: none;
-      padding: 0.75rem 2rem;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
-    }
+  .card {
+    position: relative;
+    z-index: 1;
+    background: white;
+    border-radius: 28px;
+    padding: 2.5rem 2rem;
+    max-width: 420px;
+    width: 92%;
+    box-shadow: 0 20px 60px rgba(232,84,122,0.15), 0 4px 20px rgba(0,0,0,0.06);
+    border: 1.5px solid var(--blush);
+    text-align: center;
+    margin: 2rem auto;
+  }
 
-    button:hover {
-      background: #4338ca;
-    }
+  .ribbon {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--rose);
+    color: white;
+    font-size: 11px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 5px 20px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
 
-    button:active {
-      transform: scale(0.97);
-    }
+  .emoji-big {
+    font-size: 3rem;
+    display: block;
+    margin: 0.5rem 0 0.25rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
 
-    .footer {
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: #aaa;
-    }
-  </style>
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--deep);
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+  }
+
+  h1 em { color: var(--rose); font-style: italic; }
+
+  .subtitle {
+    font-size: 0.85rem;
+    color: #b07090;
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.03em;
+  }
+
+  .progress-wrap {
+    background: var(--soft);
+    border-radius: 10px;
+    height: 6px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blush), var(--rose));
+    border-radius: 10px;
+    transition: width 0.6s cubic-bezier(0.34,1.56,0.64,1);
+  }
+
+  .question-area { min-height: 180px; }
+
+  .q-number {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #cba0b0;
+    margin-bottom: 0.5rem;
+  }
+
+  .q-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--deep);
+    line-height: 1.5;
+    margin-bottom: 1.5rem;
+    min-height: 56px;
+  }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option-btn {
+    background: var(--soft);
+    border: 1.5px solid var(--blush);
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: var(--deep);
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.22s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .option-btn .opt-emoji { font-size: 1.1rem; flex-shrink: 0; }
+
+  .option-btn:hover, .option-btn:active {
+    background: var(--blush);
+    border-color: var(--rose);
+    transform: translateX(4px);
+  }
+
+  .option-btn.selected {
+    background: var(--rose);
+    border-color: var(--rose);
+    color: white;
+    transform: translateX(4px);
+  }
+
+  .reaction {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--soft);
+    border-radius: 14px;
+    font-size: 0.88rem;
+    color: #c0507a;
+    font-style: italic;
+    display: none;
+    line-height: 1.5;
+    border-left: 3px solid var(--blush);
+    text-align: left;
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reaction.show { display: block; }
+
+  .next-btn {
+    margin-top: 1.2rem;
+    background: var(--rose);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 0.85rem 2rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.2s ease;
+    display: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .next-btn:hover { background: #d43d68; transform: scale(1.02); }
+  .next-btn.show { display: block; animation: fadeIn 0.4s ease; }
+
+  .meter-wrap { margin: 1rem 0; }
+
+  .meter-bar {
+    height: 10px;
+    background: var(--soft);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .meter-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f9c6d3, #e8547a, #c0307a);
+    border-radius: 10px;
+    transition: width 1.2s cubic-bezier(0.34,1.56,0.64,1);
+    width: 0%;
+  }
+
+  .final-screen { display: none; }
+  .final-screen.show { display: block; animation: fadeIn 0.6s ease; }
+  .question-area.hide { display: none; }
+
+  .final-emoji {
+    font-size: 3.5rem;
+    margin: 0.5rem 0;
+    display: block;
+    animation: heartBeat 1s ease-in-out infinite;
+  }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    14%  { transform: scale(1.2); }
+    28%  { transform: scale(1); }
+    42%  { transform: scale(1.15); }
+    70%  { transform: scale(1); }
+  }
+
+  .final-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    color: var(--deep);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .final-title em { color: var(--rose); }
+
+  .final-desc {
+    font-size: 0.88rem;
+    color: #b07090;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    font-weight: 300;
+  }
+
+  .love-score-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--rose);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .love-score-label {
+    font-size: 0.8rem;
+    color: #cba0b0;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .message-box {
+    background: linear-gradient(135deg, var(--soft), #ffd6e7);
+    border-radius: 16px;
+    padding: 1.2rem;
+    margin: 1rem 0;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--deep);
+    line-height: 1.6;
+    border: 1px solid var(--blush);
+  }
+
+  .restart-btn {
+    background: white;
+    border: 1.5px solid var(--rose);
+    color: var(--rose);
+    border-radius: 14px;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .restart-btn:hover { background: var(--rose); color: white; }
+
+  .confetti-piece {
+    position: fixed;
+    pointer-events: none;
+    z-index: 999;
+    animation: confettiFall 2.5s ease-in forwards;
+  }
+
+  @keyframes confettiFall {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(80vh) rotate(720deg); opacity: 0; }
+  }
+
+  @media (max-width: 400px) {
+    .card { padding: 2rem 1.4rem; }
+    h1 { font-size: 1.4rem; }
+    .q-text { font-size: 1.05rem; }
+  }
+</style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Hello, GitHub Pages! 👋</h1>
-    <p>This site is deployed using GitHub Actions. Click the button below to see JavaScript in action.</p>
+<div class="hearts-bg" id="heartsBg"></div>
 
-    <div id="message">Click the button!</div>
+<div class="card">
+  <div class="ribbon">✨ just for you ✨</div>
 
-    <button onclick="showGreeting()">Say Hello</button>
+  <span class="emoji-big">💖</span>
+  <h1>Hey, <em>Princy</em>!</h1>
+  <p class="subtitle">A tiny game that knows your heart already 🌸</p>
 
-    <div class="footer">Deployed via GitHub Pages</div>
+  <div class="progress-wrap">
+    <div class="progress-bar" id="progressBar" style="width:0%"></div>
   </div>
 
-  <script>
-    const greetings = [
-      "Hello from JavaScript! 🎉",
-      "You clicked again! 😄",
-      "GitHub Pages is awesome! 🚀",
-      "Keep clicking, I dare you! 😎",
-      "JavaScript is fun! ✨"
-    ];
+  <div class="question-area" id="questionArea">
+    <p class="q-number" id="qNumber">Question 1 of 8</p>
+    <p class="q-text" id="qText"></p>
+    <div class="options" id="options"></div>
+    <div class="reaction" id="reaction"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
+  </div>
 
-    let clickCount = 0;
+  <div class="final-screen" id="finalScreen">
+    <span class="final-emoji">💗</span>
+    <p class="final-title" id="finalTitle"></p>
+    <div class="love-score-big" id="loveScore"></div>
+    <span class="love-score-label">Love Compatibility</span>
+    <div class="meter-wrap">
+      <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
+    </div>
+    <div class="message-box" id="messageBox"></div>
+    <p class="final-desc" id="finalDesc"></p>
+    <button class="restart-btn" onclick="restart()">Play Again 💫</button>
+  </div>
+</div>
 
-    function showGreeting() {
-      const messageEl = document.getElementById("message");
-      messageEl.textContent = greetings[clickCount % greetings.length];
-      clickCount++;
-    }
-  </script>
+<script>
+const questions = [
+  {
+    q: "When you're having a rough day, what secretly makes you feel better?",
+    opts: [
+      { e: "🎵", t: "A song that hits deep in the feelings", pts: 3 },
+      { e: "🍫", t: "Chocolate and pretending I'm fine", pts: 2 },
+      { e: "💬", t: "One special person who just gets me", pts: 4 },
+      { e: "🛏️", t: "My bed and absolutely zero people", pts: 1 }
+    ],
+    reactions: [
+      "Music is a whole mood 🎶 Bet you have a playlist that hits different at 2am...",
+      "Chocolate never judges 🍫 Smart choice honestly.",
+      "One special person... 👀 I wonder who that could be, Princy~",
+      "Totally valid. Rest is self-care, babe 💤"
+    ]
+  },
+  {
+    q: "If someone secretly planned a perfect surprise for you, what would melt your heart the most?",
+    opts: [
+      { e: "🌹", t: "Flowers + a handwritten note, old school", pts: 4 },
+      { e: "🌃", t: "Rooftop date under stars", pts: 4 },
+      { e: "🍕", t: "My fav food + a movie night in", pts: 3 },
+      { e: "📸", t: "A photo album of our memories", pts: 4 }
+    ],
+    reactions: [
+      "Old school romance is the best romance 🌹 Handwritten letters beat everything.",
+      "Rooftop + stars = instantly cinematic 🌃 You have very good taste.",
+      "Comfort is love 🍕 And honestly? That's the most romantic thing.",
+      "A photo album means someone paid attention 📸 That's everything."
+    ]
+  },
+  {
+    q: "What's your honest reaction when someone is really, really into you?",
+    opts: [
+      { e: "😳", t: "I get shy and pretend I didn't notice", pts: 3 },
+      { e: "😏", t: "I notice, I like it, but I play cool", pts: 4 },
+      { e: "💭", t: "I overthink every single text they send", pts: 3 },
+      { e: "🥰", t: "I smile for no reason all day long", pts: 5 }
+    ],
+    reactions: [
+      "The shy ones are always secretly the most soft 🥺 We see you, Princy.",
+      "Playing cool while feeling butterflies? That's an art form 😏",
+      "Analyzing a 'k' for 45 minutes is completely valid behaviour 😂",
+      "Smiling for no reason is the most beautiful symptom of feelings 🥰"
+    ]
+  },
+  {
+    q: "Which of these would make you feel the most loved?",
+    opts: [
+      { e: "💌", t: "Long messages that say everything unsaid", pts: 5 },
+      { e: "🤝", t: "Someone who shows up without being asked", pts: 4 },
+      { e: "👁️", t: "Being truly, deeply seen and understood", pts: 5 },
+      { e: "😂", t: "Someone who makes me laugh every single day", pts: 4 }
+    ],
+    reactions: [
+      "Long paragraphs at midnight — the language of real feelings 💌",
+      "Showing up without being asked. Actions over words, always 🤝",
+      "Being truly seen is rare. And when it happens? It's everything 👁️💕",
+      "Laughter is the secret ingredient in every great love story 😂"
+    ]
+  },
+  {
+    q: "It's late night. What are you most likely doing?",
+    opts: [
+      { e: "📱", t: "Scrolling and accidentally smiling at something", pts: 2 },
+      { e: "💭", t: "Thinking about everything and everyone", pts: 3 },
+      { e: "💬", t: "Texting someone I shouldn't be texting so late", pts: 5 },
+      { e: "🌙", t: "Lying awake feeling some kind of way", pts: 4 }
+    ],
+    reactions: [
+      "Accidentally smiling at 1am? Very suspicious 😏",
+      "Late night thoughts reveal what we really care about 🌙",
+      "Someone you shouldn't text this late... noted 👀 They're lucky.",
+      "The night hits different when the heart is full of feelings 🌙💕"
+    ]
+  },
+  {
+    q: "Someone you like texts \"I was just thinking about you.\" Your heart does...",
+    opts: [
+      { e: "💓", t: "Skips three beats immediately", pts: 5 },
+      { e: "😶", t: "Nothing. I stay composed. (I am lying.)", pts: 4 },
+      { e: "🔥", t: "Explodes. I screenshot and send to my bestie.", pts: 4 },
+      { e: "🥹", t: "Goes soft like warm butter. I melt.", pts: 5 }
+    ],
+    reactions: [
+      "Three skipped beats is basically cardiac poetry 💓",
+      "Staying composed while internally combusting is a skill 😶🔥",
+      "Screenshotting for your bestie is the most honest reaction ever 📸😂",
+      "Melting into warm butter — that's the softest, most adorable thing 🥹"
+    ]
+  },
+  {
+    q: "What kind of love do you secretly crave the most?",
+    opts: [
+      { e: "🔥", t: "Intense, passionate, a little overwhelming", pts: 4 },
+      { e: "🌿", t: "Calm, steady, feels like home", pts: 4 },
+      { e: "🎭", t: "Playful, surprising, full of laughs", pts: 4 },
+      { e: "🌊", t: "Deep, honest, no walls between us", pts: 5 }
+    ],
+    reactions: [
+      "Passionate love is electric ⚡ The kind poems are written about.",
+      "Feeling like home is the highest form of love 🏡 Underrated and everything.",
+      "Playful love keeps you young and alive 🎭 The very best kind.",
+      "Deep and honest, no walls — that's rare, brave, and beautiful 🌊💕"
+    ]
+  },
+  {
+    q: "Last one, Princy 💕 If you could tell someone how you feel right now, what would it be?",
+    opts: [
+      { e: "😊", t: "I'm happier than I let people see", pts: 4 },
+      { e: "💘", t: "Someone already has my heart, they just don't know", pts: 5 },
+      { e: "🌸", t: "I'm ready for something real and beautiful", pts: 5 },
+      { e: "🤫", t: "I'd rather show them, not tell them", pts: 4 }
+    ],
+    reactions: [
+      "Hidden happiness is still happiness 😊 Let people see your light, Princy.",
+      "They don't know yet? 👀 Maybe they need a hint... 💘",
+      "Ready for something real — that's the most beautiful place to be 🌸",
+      "Actions over words. You're a woman of depth and intention 🤫✨"
+    ]
+  }
+];
 
+let current = 0, totalScore = 0, selectedIndex = -1;
+
+function buildHearts() {
+  const bg = document.getElementById('heartsBg');
+  const emojis = ['💕','🌸','✨','💗','🌷','💓','🥀'];
+  for (let i = 0; i < 18; i++) {
+    const h = document.createElement('div');
+    h.className = 'heart-float';
+    h.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    h.style.left = Math.random() * 100 + '%';
+    h.style.fontSize = (0.8 + Math.random() * 1) + 'rem';
+    const dur = 8 + Math.random() * 12;
+    h.style.animationDuration = dur + 's';
+    h.style.animationDelay = (Math.random() * dur) + 's';
+    bg.appendChild(h);
+  }
+}
+
+function loadQuestion() {
+  const q = questions[current];
+  document.getElementById('qNumber').textContent = 'Question ' + (current + 1) + ' of ' + questions.length;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('progressBar').style.width = (current / questions.length * 100) + '%';
+  document.getElementById('reaction').className = 'reaction';
+  document.getElementById('nextBtn').className = 'next-btn';
+  selectedIndex = -1;
+
+  const optDiv = document.getElementById('options');
+  optDiv.innerHTML = '';
+  q.opts.forEach(function(o, i) {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = '<span class="opt-emoji">' + o.e + '</span><span>' + o.t + '</span>';
+    btn.onclick = function() { selectOption(i, btn); };
+    optDiv.appendChild(btn);
+  });
+}
+
+function selectOption(i, btn) {
+  if (selectedIndex !== -1) return;
+  selectedIndex = i;
+  document.querySelectorAll('.option-btn').forEach(function(b) { b.classList.remove('selected'); });
+  btn.classList.add('selected');
+  totalScore += questions[current].opts[i].pts;
+  const reaction = document.getElementById('reaction');
+  reaction.textContent = questions[current].reactions[i];
+  reaction.classList.add('show');
+  document.getElementById('nextBtn').classList.add('show');
+}
+
+function nextQuestion() {
+  current++;
+  if (current >= questions.length) showFinal();
+  else loadQuestion();
+}
+
+function showFinal() {
+  document.getElementById('questionArea').classList.add('hide');
+  document.getElementById('progressBar').style.width = '100%';
+
+  const maxScore = questions.reduce(function(s, q) { return s + Math.max.apply(null, q.opts.map(function(o) { return o.pts; })); }, 0);
+  const pct = Math.round((totalScore / maxScore) * 100);
+
+  let title, msg, desc;
+  if (pct >= 85) {
+    title = 'Princy, your heart is <em>already open</em> 💗';
+    msg = '"You feel deeply, love quietly, and give warmly. The right person isn\'t coming — they\'re already here, circling your orbit, hoping you\'ll let them in."';
+    desc = 'You radiate warmth, depth, and genuine feeling. Someone out there is already completely, hopelessly, softly in love with you. 🌸';
+  } else if (pct >= 68) {
+    title = 'You\'re <em>dangerously loveable</em>, Princy ✨';
+    msg = '"You have this rare quality — you make people feel seen. That\'s not common. That\'s extraordinary. Let yourself be seen too."';
+    desc = 'Your heart has beautiful rooms in it. Someone deserves a tour — maybe it\'s time to open the door just a little wider. 💕';
+  } else {
+    title = 'Guarded heart, but <em>golden inside</em> 🌹';
+    msg = '"The walls you\'ve built come from a place of protection. But walls also keep sunlight out. Someone patient is waiting — not to break anything, just to bloom beside you."';
+    desc = 'You feel more than you show. That\'s okay. The right person will wait as long as it takes. 🤍';
+  }
+
+  document.getElementById('finalTitle').innerHTML = title;
+  document.getElementById('loveScore').textContent = pct + '%';
+  document.getElementById('messageBox').textContent = msg;
+  document.getElementById('finalDesc').textContent = desc;
+  document.getElementById('finalScreen').classList.add('show');
+
+  setTimeout(function() { document.getElementById('meterFill').style.width = pct + '%'; }, 400);
+  launchConfetti();
+}
+
+function launchConfetti() {
+  const colors = ['#e8547a','#f9c6d3','#e8a87c','#fff','#fde8ef','#c0307a'];
+  for (let i = 0; i < 60; i++) {
+    setTimeout(function() {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.top = '-10px';
+      c.style.background = colors[Math.floor(Math.random() * colors.length)];
+      c.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      c.style.width = (5 + Math.random() * 8) + 'px';
+      c.style.height = (5 + Math.random() * 8) + 'px';
+      document.body.appendChild(c);
+      setTimeout(function() { c.remove(); }, 3000);
+    }, i * 35);
+  }
+}
+
+function restart() {
+  current = 0; totalScore = 0; selectedIndex = -1;
+  document.getElementById('finalScreen').classList.remove('show');
+  document.getElementById('questionArea').classList.remove('hide');
+  document.getElementById('meterFill').style.width = '0%';
+  loadQuestion();
+}
+
+buildHearts();
+loadQuestion();
+</script>
 </body>
 </html>
