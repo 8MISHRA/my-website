@@ -25,7 +25,7 @@ export const HERO_CTA_SECONDARY_HREF = "#contact";
 
 // ─── ABOUT ──────────────────────────────────────────────
 export const ABOUT_TAG = "About";
-export const ABOUT_TITLE = "The person behind the code.";
+export const ABOUT_TITLE = "The Person Behind The Code";
 export const ABOUT_PARAGRAPHS = [
   {
     before: "I\u2019m a ",
@@ -55,7 +55,7 @@ export const ABOUT_PARAGRAPHS = [
 
 // ─── SKILLS ─────────────────────────────────────────────
 export const SKILLS_TAG = "Skills";
-export const SKILLS_TITLE = "The full toolkit.";
+export const SKILLS_TITLE = "The Full Toolkit";
 export const SKILLS_SUBTITLE =
   "Technologies I use to architect, build, and ship systems that hold up.";
 
@@ -67,7 +67,7 @@ export const EXPERIENCE_TITLE = "Where I\u2019ve shipped real things.";
 export const PROJECTS_TAG = "Projects";
 export const PROJECTS_TITLE = "Things I\u2019ve built.";
 export const PROJECTS_GITHUB_LABEL = "All on GitHub \u2192";
-export const PROJECTS_GITHUB_URL = "https://github.com/divyansh-mishra";
+export const PROJECTS_GITHUB_URL = "https://github.com/8mishra";
 
 // ─── EDUCATION ──────────────────────────────────────────
 export const EDUCATION_TAG = "Education";
@@ -91,6 +91,6 @@ export const FOOTER_NAME = "Divyansh Mishra";
 export const FOOTER_COPY_SUFFIX = ". Engineered with intent.";
 export const FOOTER_BACK_TO_TOP = "Back to top \u2191";
 export const FOOTER_GITHUB_LABEL = "GitHub";
-export const FOOTER_GITHUB_URL = "https://github.com/divyansh-mishra";
+export const FOOTER_GITHUB_URL = "https://github.com/8mishra";
 export const FOOTER_LINKEDIN_LABEL = "LinkedIn";
-export const FOOTER_LINKEDIN_URL = "https://linkedin.com/in/divyansh-mishra";
+export const FOOTER_LINKEDIN_URL = "https://in.linkedin.com/in/divyansh-mishra-software-engineer";

@@ -162,14 +162,14 @@ export const PROJECTS: Project[] = [
     description:
       "Built a churn prediction model achieving 80%+ accuracy using SVM and XGBoost on customer behavioral data.",
     stack: ["Python", "SVM", "XGBoost", "scikit-learn", "Flask"],
-    github: "https://github.com/divyansh-mishra",
+    github: "https://github.com/8mishra",
   },
   {
     title: "Web Content Similarity Analyzer",
     description:
       "Developed a tool to detect semantic similarity between web pages using simHash, TF-IDF, and Cosine Similarity.",
     stack: ["Python", "TF-IDF", "Cosine Similarity", "simHash"],
-    github: "https://github.com/divyansh-mishra",
+    github: "https://github.com/8mishra",
   },
 ];
 
@@ -220,12 +220,12 @@ export const ACHIEVEMENTS: Achievement[] = [
 export const CONTACT_LINKS = [
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/divyansh-mishra",
+    href: "https://in.linkedin.com/in/divyansh-mishra-software-engineer",
     icon: "linkedin" as const,
   },
   {
     label: "GitHub",
-    href: "https://github.com/divyansh-mishra",
+    href: "https://github.com/8mishra",
     icon: "github" as const,
   },
   {
