@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>A Little Game for Princy 💕</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet"/>
+<title>Princy के लिए एक प्यारा खेल 💕</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -18,7 +18,7 @@
   }
 
   body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Noto Sans Devanagari', 'Lato', sans-serif;
     background: var(--cream);
     min-height: 100vh;
     display: flex;
@@ -345,11 +345,11 @@
 <div class="hearts-bg" id="heartsBg"></div>
 
 <div class="card">
-  <div class="ribbon">✨ just for you ✨</div>
+  <div class="ribbon">✨ सिर्फ तुम्हारे लिए ✨</div>
 
   <span class="emoji-big">💖</span>
-  <h1>Hey, <em>Princy</em>!</h1>
-  <p class="subtitle">A tiny game that knows your heart already 🌸</p>
+  <h1>हे, <em>Princy</em>!</h1>
+  <p class="subtitle">एक छोटा-सा खेल जो तुम्हारा दिल पहले से जानता है 🌸</p>
 
   <div class="progress-wrap">
     <div class="progress-bar" id="progressBar" style="width:0%"></div>
@@ -360,143 +360,143 @@
     <p class="q-text" id="qText"></p>
     <div class="options" id="options"></div>
     <div class="reaction" id="reaction"></div>
-    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()">आगे बढ़ो →</button>
   </div>
 
   <div class="final-screen" id="finalScreen">
     <span class="final-emoji">💗</span>
     <p class="final-title" id="finalTitle"></p>
     <div class="love-score-big" id="loveScore"></div>
-    <span class="love-score-label">Love Compatibility</span>
+    <span class="love-score-label">प्यार की मिलान</span>
     <div class="meter-wrap">
       <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
     </div>
     <div class="message-box" id="messageBox"></div>
     <p class="final-desc" id="finalDesc"></p>
-    <button class="restart-btn" onclick="restart()">Play Again 💫</button>
+    <button class="restart-btn" onclick="restart()">फिर से खेलो 💫</button>
   </div>
 </div>
 
 <script>
 const questions = [
   {
-    q: "When you're having a rough day, what secretly makes you feel better?",
+    q: "जब तुम्हारा दिन बहुत बुरा जाता है, तो चुपके से क्या तुम्हें बेहतर महसूस कराता है?",
     opts: [
-      { e: "🎵", t: "A song that hits deep in the feelings", pts: 3 },
-      { e: "🍫", t: "Chocolate and pretending I'm fine", pts: 2 },
-      { e: "💬", t: "One special person who just gets me", pts: 4 },
-      { e: "🛏️", t: "My bed and absolutely zero people", pts: 1 }
+      { e: "🎵", t: "एक गाना जो दिल की गहराइयों को छू ले", pts: 3 },
+      { e: "🍫", t: "चॉकलेट खाओ और ठीक होने का नाटक करो", pts: 2 },
+      { e: "💬", t: "एक खास इंसान जो बिना बोले समझ जाए", pts: 4 },
+      { e: "🛏️", t: "मेरा बिस्तर और बिल्कुल अकेलापन", pts: 1 }
     ],
     reactions: [
-      "Music is a whole mood 🎶 Bet you have a playlist that hits different at 2am...",
-      "Chocolate never judges 🍫 Smart choice honestly.",
-      "One special person... 👀 I wonder who that could be, Princy~",
-      "Totally valid. Rest is self-care, babe 💤"
+      "संगीत पूरा एक जज़्बात है 🎶 पक्का तुम्हारी रात 2 बजे वाली playlist अलग ही level की होगी...",
+      "चॉकलेट कभी judge नहीं करती 🍫 सच में समझदारी है यह।",
+      "एक खास इंसान... 👀 मैं सोच रहा हूँ वो कौन हो सकता है, Princy~",
+      "बिल्कुल सही। आराम भी एक तरह का प्यार है अपने आप से 💤"
     ]
   },
   {
-    q: "If someone secretly planned a perfect surprise for you, what would melt your heart the most?",
+    q: "अगर कोई तुम्हारे लिए चुपके से परफेक्ट सरप्राइज़ करे, तो दिल किस पर सबसे ज़्यादा पिघलेगा?",
     opts: [
-      { e: "🌹", t: "Flowers + a handwritten note, old school", pts: 4 },
-      { e: "🌃", t: "Rooftop date under stars", pts: 4 },
-      { e: "🍕", t: "My fav food + a movie night in", pts: 3 },
-      { e: "📸", t: "A photo album of our memories", pts: 4 }
+      { e: "🌹", t: "फूल + हाथ से लिखी चिट्ठी, पुराने ज़माने वाला प्यार", pts: 4 },
+      { e: "🌃", t: "तारों तले छत पर डेट", pts: 4 },
+      { e: "🍕", t: "मनपसंद खाना + घर में मूवी नाइट", pts: 3 },
+      { e: "📸", t: "हमारी यादों की फोटो album", pts: 4 }
     ],
     reactions: [
-      "Old school romance is the best romance 🌹 Handwritten letters beat everything.",
-      "Rooftop + stars = instantly cinematic 🌃 You have very good taste.",
-      "Comfort is love 🍕 And honestly? That's the most romantic thing.",
-      "A photo album means someone paid attention 📸 That's everything."
+      "पुराने ज़माने का रोमांस सबसे असली होता है 🌹 हाथ से लिखी चिट्ठी सब कुछ है।",
+      "छत + तारे = सीधा फ़िल्मी सीन 🌃 तुम्हारा taste बहुत अच्छा है।",
+      "आराम ही प्यार है 🍕 और सच में? यही सबसे रोमांटिक है।",
+      "फोटो album मतलब किसी ने ध्यान दिया 📸 यही तो सब कुछ है।"
     ]
   },
   {
-    q: "What's your honest reaction when someone is really, really into you?",
+    q: "जब कोई तुम पर सच में बहुत ज़्यादा फ़िदा हो, तो तुम्हारी असली reaction क्या होती है?",
     opts: [
-      { e: "😳", t: "I get shy and pretend I didn't notice", pts: 3 },
-      { e: "😏", t: "I notice, I like it, but I play cool", pts: 4 },
-      { e: "💭", t: "I overthink every single text they send", pts: 3 },
-      { e: "🥰", t: "I smile for no reason all day long", pts: 5 }
+      { e: "😳", t: "शरमा जाती हूँ और जैसे देखा ही नहीं", pts: 3 },
+      { e: "😏", t: "notice करती हूँ, अच्छा लगता है, पर cool रहती हूँ", pts: 4 },
+      { e: "💭", t: "उनके हर एक message को 45 मिनट सोचती हूँ", pts: 3 },
+      { e: "🥰", t: "बिना वजह दिनभर मुस्कुराती रहती हूँ", pts: 5 }
     ],
     reactions: [
-      "The shy ones are always secretly the most soft 🥺 We see you, Princy.",
-      "Playing cool while feeling butterflies? That's an art form 😏",
-      "Analyzing a 'k' for 45 minutes is completely valid behaviour 😂",
-      "Smiling for no reason is the most beautiful symptom of feelings 🥰"
+      "जो शरमाते हैं वो अंदर से सबसे नरम दिल के होते हैं 🥺 देख लिया Princy, तुम्हें।",
+      "Butterflies feel करते हुए cool रहना? यह तो एक कला है 😏",
+      "एक 'k' को 45 मिनट analyze करना — बिल्कुल valid है 😂",
+      "बिना वजह मुस्कुराना feelings का सबसे खूबसूरत symptom है 🥰"
     ]
   },
   {
-    q: "Which of these would make you feel the most loved?",
+    q: "इनमें से कौन-सी चीज़ तुम्हें सबसे ज़्यादा प्यार का एहसास दिलाएगी?",
     opts: [
-      { e: "💌", t: "Long messages that say everything unsaid", pts: 5 },
-      { e: "🤝", t: "Someone who shows up without being asked", pts: 4 },
-      { e: "👁️", t: "Being truly, deeply seen and understood", pts: 5 },
-      { e: "😂", t: "Someone who makes me laugh every single day", pts: 4 }
+      { e: "💌", t: "लम्बे messages जो सब कुछ कह दें जो अनकहा रहा", pts: 5 },
+      { e: "🤝", t: "कोई जो बिना माँगे आ जाए", pts: 4 },
+      { e: "👁️", t: "कोई जो सच में, गहराई से समझे मुझे", pts: 5 },
+      { e: "😂", t: "कोई जो रोज़ हँसाए बिना रुके", pts: 4 }
     ],
     reactions: [
-      "Long paragraphs at midnight — the language of real feelings 💌",
-      "Showing up without being asked. Actions over words, always 🤝",
-      "Being truly seen is rare. And when it happens? It's everything 👁️💕",
-      "Laughter is the secret ingredient in every great love story 😂"
+      "आधी रात के लम्बे paragraphs — असली जज़्बातों की भाषा 💌",
+      "बिना माँगे आ जाना — words से बड़े होते हैं actions 🤝",
+      "सच में समझा जाना बहुत rare है। और जब होता है? सब कुछ होता है 👁️💕",
+      "हँसी हर अच्छी प्रेम कहानी का राज़ है 😂"
     ]
   },
   {
-    q: "It's late night. What are you most likely doing?",
+    q: "रात को देर से तुम सबसे ज़्यादा क्या कर रही होती हो?",
     opts: [
-      { e: "📱", t: "Scrolling and accidentally smiling at something", pts: 2 },
-      { e: "💭", t: "Thinking about everything and everyone", pts: 3 },
-      { e: "💬", t: "Texting someone I shouldn't be texting so late", pts: 5 },
-      { e: "🌙", t: "Lying awake feeling some kind of way", pts: 4 }
+      { e: "📱", t: "scroll करती हूँ और अचानक मुस्कुरा देती हूँ", pts: 2 },
+      { e: "💭", t: "सब कुछ और सबके बारे में सोचती रहती हूँ", pts: 3 },
+      { e: "💬", t: "किसी को text करती हूँ जिसे इतनी रात नहीं करना चाहिए", pts: 5 },
+      { e: "🌙", t: "जागती हूँ और अजीब-सा कुछ feel होता है", pts: 4 }
     ],
     reactions: [
-      "Accidentally smiling at 1am? Very suspicious 😏",
-      "Late night thoughts reveal what we really care about 🌙",
-      "Someone you shouldn't text this late... noted 👀 They're lucky.",
-      "The night hits different when the heart is full of feelings 🌙💕"
+      "रात 1 बजे अचानक मुस्कुराना? बहुत suspicious है यह 😏",
+      "रात की सोच बताती है दिल में क्या है असलियत में 🌙",
+      "जिसे इतनी रात text नहीं करना था... noted 👀 वो खुशनसीब है।",
+      "रात अलग ही लगती है जब दिल भरा हो 🌙💕"
     ]
   },
   {
-    q: "Someone you like texts \"I was just thinking about you.\" Your heart does...",
+    q: "जिसे तुम पसंद करती हो वो text करे — 'बस तुम्हारे बारे में सोच रहा था।' तुम्हारा दिल...",
     opts: [
-      { e: "💓", t: "Skips three beats immediately", pts: 5 },
-      { e: "😶", t: "Nothing. I stay composed. (I am lying.)", pts: 4 },
-      { e: "🔥", t: "Explodes. I screenshot and send to my bestie.", pts: 4 },
-      { e: "🥹", t: "Goes soft like warm butter. I melt.", pts: 5 }
+      { e: "💓", t: "तीन धड़कनें एकदम से छोड़ देता है", pts: 5 },
+      { e: "😶", t: "कुछ नहीं। मैं composed रहती हूँ। (झूठ है यह।)", pts: 4 },
+      { e: "🔥", t: "फट जाता है। Screenshot लेकर bestie को भेजती हूँ।", pts: 4 },
+      { e: "🥹", t: "मक्खन की तरह पिघल जाता है। मैं गल जाती हूँ।", pts: 5 }
     ],
     reactions: [
-      "Three skipped beats is basically cardiac poetry 💓",
-      "Staying composed while internally combusting is a skill 😶🔥",
-      "Screenshotting for your bestie is the most honest reaction ever 📸😂",
-      "Melting into warm butter — that's the softest, most adorable thing 🥹"
+      "तीन धड़कनें छूट जाना — यह तो दिल की शायरी है 💓",
+      "अंदर से जलते हुए बाहर से composed रहना — यह एक skill है 😶🔥",
+      "Bestie को screenshot भेजना सबसे honest reaction है 📸😂",
+      "मक्खन की तरह पिघलना — यह सबसे प्यारी और adorable चीज़ है 🥹"
     ]
   },
   {
-    q: "What kind of love do you secretly crave the most?",
+    q: "मन ही मन तुम किस तरह के प्यार को सबसे ज़्यादा चाहती हो?",
     opts: [
-      { e: "🔥", t: "Intense, passionate, a little overwhelming", pts: 4 },
-      { e: "🌿", t: "Calm, steady, feels like home", pts: 4 },
-      { e: "🎭", t: "Playful, surprising, full of laughs", pts: 4 },
-      { e: "🌊", t: "Deep, honest, no walls between us", pts: 5 }
+      { e: "🔥", t: "तीव्र, जुनूनी, थोड़ा overwhelming", pts: 4 },
+      { e: "🌿", t: "शांत, स्थिर, घर जैसा feel", pts: 4 },
+      { e: "🎭", t: "शरारती, हँसी-मज़ाक से भरा, हमेशा surprise", pts: 4 },
+      { e: "🌊", t: "गहरा, सच्चा, हमारे बीच कोई दीवार न हो", pts: 5 }
     ],
     reactions: [
-      "Passionate love is electric ⚡ The kind poems are written about.",
-      "Feeling like home is the highest form of love 🏡 Underrated and everything.",
-      "Playful love keeps you young and alive 🎭 The very best kind.",
-      "Deep and honest, no walls — that's rare, brave, and beautiful 🌊💕"
+      "जुनूनी प्यार बिजली जैसा होता है ⚡ इसी पर कविताएं लिखी जाती हैं।",
+      "घर जैसा feel — यही प्यार का सबसे ऊँचा रूप है 🏡 Underrated, पर सब कुछ।",
+      "शरारती प्यार ज़िंदगी में रंग भर देता है 🎭 सबसे मज़ेदार किस्म।",
+      "गहरा और सच्चा, कोई दीवार नहीं — यह rare है, brave है, खूबसूरत है 🌊💕"
     ]
   },
   {
-    q: "Last one, Princy 💕 If you could tell someone how you feel right now, what would it be?",
+    q: "आखिरी सवाल, Princy 💕 अगर अभी किसी को अपनी feelings बता सको, तो क्या कहोगी?",
     opts: [
-      { e: "😊", t: "I'm happier than I let people see", pts: 4 },
-      { e: "💘", t: "Someone already has my heart, they just don't know", pts: 5 },
-      { e: "🌸", t: "I'm ready for something real and beautiful", pts: 5 },
-      { e: "🤫", t: "I'd rather show them, not tell them", pts: 4 }
+      { e: "😊", t: "मैं उससे ज़्यादा खुश हूँ जितना दिखाती हूँ", pts: 4 },
+      { e: "💘", t: "किसी के पास मेरा दिल है, उन्हें पता नहीं अभी", pts: 5 },
+      { e: "🌸", t: "मैं कुछ असली और खूबसूरत के लिए तैयार हूँ", pts: 5 },
+      { e: "🤫", t: "बताऊँगी नहीं, दिखाऊँगी उन्हें", pts: 4 }
     ],
     reactions: [
-      "Hidden happiness is still happiness 😊 Let people see your light, Princy.",
-      "They don't know yet? 👀 Maybe they need a hint... 💘",
-      "Ready for something real — that's the most beautiful place to be 🌸",
-      "Actions over words. You're a woman of depth and intention 🤫✨"
+      "छुपी हुई खुशी भी खुशी है 😊 अपनी रोशनी दुनिया को दिखाओ, Princy।",
+      "उन्हें अभी तक पता नहीं? 👀 शायद एक hint की ज़रूरत है... 💘",
+      "कुछ असली के लिए तैयार होना — यही सबसे खूबसूरत जगह है 🌸",
+      "बताना नहीं, दिखाना — तुम गहराई और इरादे वाली लड़की हो 🤫✨"
     ]
   }
 ];
@@ -521,7 +521,7 @@ function buildHearts() {
 
 function loadQuestion() {
   const q = questions[current];
-  document.getElementById('qNumber').textContent = 'Question ' + (current + 1) + ' of ' + questions.length;
+  document.getElementById('qNumber').textContent = 'सवाल ' + (current + 1) + ' / ' + questions.length;
   document.getElementById('qText').textContent = q.q;
   document.getElementById('progressBar').style.width = (current / questions.length * 100) + '%';
   document.getElementById('reaction').className = 'reaction';
@@ -566,17 +566,17 @@ function showFinal() {
 
   let title, msg, desc;
   if (pct >= 85) {
-    title = 'Princy, your heart is <em>already open</em> 💗';
-    msg = '"You feel deeply, love quietly, and give warmly. The right person isn\'t coming — they\'re already here, circling your orbit, hoping you\'ll let them in."';
-    desc = 'You radiate warmth, depth, and genuine feeling. Someone out there is already completely, hopelessly, softly in love with you. 🌸';
+    title = 'Princy, तुम्हारा दिल <em>पहले से खुला है</em> 💗';
+    msg = '"तुम गहराई से feel करती हो, चुपके से प्यार करती हो, और गर्मजोशी से देती हो। सही इंसान आने वाला नहीं — वो पहले से है, तुम्हारे इर्द-गिर्द घूम रहा है, बस तुम्हारे दरवाज़ा खोलने का इंतज़ार कर रहा है।"';
+    desc = 'तुम्हारे अंदर एक खूबसूरत गर्माहट है। कोई पहले से ही पूरी तरह, बेहद चुपके से तुमसे प्यार कर रहा है। 🌸';
   } else if (pct >= 68) {
-    title = 'You\'re <em>dangerously loveable</em>, Princy ✨';
-    msg = '"You have this rare quality — you make people feel seen. That\'s not common. That\'s extraordinary. Let yourself be seen too."';
-    desc = 'Your heart has beautiful rooms in it. Someone deserves a tour — maybe it\'s time to open the door just a little wider. 💕';
+    title = 'तुम <em>खतरनाक हद तक प्यारी हो</em>, Princy ✨';
+    msg = '"तुम में एक rare quality है — तुम लोगों को feel कराती हो कि उन्हें देखा जा रहा है। यह आम नहीं। यह extraordinary है। खुद को भी देखे जाने दो।"';
+    desc = 'तुम्हारे दिल में बहुत खूबसूरत कमरे हैं। किसी को tour का हक मिलना चाहिए — शायद अब दरवाज़ा थोड़ा और खोलने का वक्त है। 💕';
   } else {
-    title = 'Guarded heart, but <em>golden inside</em> 🌹';
-    msg = '"The walls you\'ve built come from a place of protection. But walls also keep sunlight out. Someone patient is waiting — not to break anything, just to bloom beside you."';
-    desc = 'You feel more than you show. That\'s okay. The right person will wait as long as it takes. 🤍';
+    title = 'दिल सँभाल कर रखा है, पर <em>अंदर से सोना है</em> 🌹';
+    msg = '"तुमने जो दीवारें बनाई हैं वो खुद को बचाने के लिए हैं। पर दीवारें धूप को भी रोक देती हैं। कोई धैर्य से इंतज़ार कर रहा है — तोड़ने नहीं, बस तुम्हारे साथ खिलने के लिए।"';
+    desc = 'तुम जितना दिखाती हो उससे ज़्यादा feel करती हो। कोई बात नहीं। सही इंसान जितना वक्त लगे, रुकेगा। 🤍';
   }
 
   document.getElementById('finalTitle').innerHTML = title;
