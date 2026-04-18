@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My GitHub Pages Site</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      max-width: 480px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #1a1a2e;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    #message {
+      font-size: 1.1rem;
+      color: #4f46e5;
+      font-weight: 600;
+      min-height: 28px;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
+
+    button:hover {
+      background: #4338ca;
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hello, GitHub Pages! 👋</h1>
+    <p>This site is deployed using GitHub Actions. Click the button below to see JavaScript in action.</p>
+
+    <div id="message">Click the button!</div>
+
+    <button onclick="showGreeting()">Say Hello</button>
+
+    <div class="footer">Deployed via GitHub Pages</div>
+  </div>
+
+  <script>
+    const greetings = [
+      "Hello from JavaScript! 🎉",
+      "You clicked again! 😄",
+      "GitHub Pages is awesome! 🚀",
+      "Keep clicking, I dare you! 😎",
+      "JavaScript is fun! ✨"
+    ];
+
+    let clickCount = 0;
+
+    function showGreeting() {
+      const messageEl = document.getElementById("message");
+      messageEl.textContent = greetings[clickCount % greetings.length];
+      clickCount++;
+    }
+  </script>
+
+</body>
+</html>
