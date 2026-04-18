@@ -1,0 +1,111 @@
+.timeline {
+  position: relative;
+  margin-top: 64px;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  margin-left: 20px;
+}
+
+.expItem {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 0 32px;
+  margin-bottom: 48px;
+}
+
+.dotWrap {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  padding-top: 6px;
+  position: relative;
+  z-index: 1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  flex-shrink: 0;
+  border: 2px solid var(--bg);
+}
+
+.expCard {
+  padding: 28px 32px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.expCard:hover {
+  border-color: var(--border2);
+  box-shadow: 0 8px 40px rgba(74, 158, 255, 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.role {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.point {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--text2);
+  line-height: 1.65;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.pointArrow {
+  color: var(--accent2);
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  margin-top: 3px;
+}
+
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+@media (max-width: 900px) {
+  .timelineLine {
+    display: none;
+  }
+  .dotWrap {
+    display: none;
+  }
+  .expItem {
+    grid-template-columns: 1fr;
+  }
+}
